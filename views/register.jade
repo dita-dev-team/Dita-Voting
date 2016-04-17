@@ -1,0 +1,61 @@
+extends layout
+block content
+    .col
+        .col-md-8
+            form.form-horizontal(enctype='multipart/form-data')
+                fieldset
+                    // Form Name
+                    legend Register Candidate
+                    // Text input
+                    .form-group
+                        label.control-label(for='name') Full Name
+                        .controls
+                            input#name.input-xlarge(name='name', placeholder='Enter Name', type='text')
+                    // Text input
+                    .form-group
+                        label.control-label(for='major') major
+                        .controls
+                            input#major.input-xlarge(name='major', placeholder='Enter major', type='text')
+                    // Text input
+                    .form-group
+                        label.control-label(for='student_id') Student ID
+                        .controls
+                            input#student_id.input-xlarge(name='student_id', placeholder='Student ID', required='', type='text')
+                    // Multiple Radios (inline)
+                    .form-group
+                        label.control-label(for='') Year of Study
+                        .controls
+                            label.radio.inline(for='year-0')
+                                input#year-0(name='year', value='First Year', checked='checked', type='radio')
+                                |       First Year
+                            label.radio.inline(for='year-1')
+                                input#year-1(name='year', value='Second Year', type='radio')
+                                |       Second Year
+                            label.radio.inline(for='year-2')
+                                input#year-2(name='year', value='Third Year', type='radio')
+                                |       Third Year
+                            label.radio.inline(for='year-3')
+                                input#year-3(name='year', value='Four Year', type='radio')
+                                |       Four Year
+                    // Select Basic
+                    .form-group
+                        label.control-label(for='post') Post
+                        .controls
+                            select#post.input-xlarge(name='post')
+                                option Chairperson
+                                option Vice Chairperson
+                                option Treasurer
+                                option Secretary
+                                option Organizing Secretary
+                                option Public Relations
+                                option Resource Lab manager
+                    // File Button
+                    .form-group
+                        label.control-label(for='image') Image
+                        .controls
+                            input#image.input-file(name='image', type='file')
+                    // Button
+                    .form-group
+                        label.control-label(for='submit')
+                        .controls
+                            button#submit.btn.btn-success(name='submit') Submit
