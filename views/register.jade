@@ -6,10 +6,10 @@ block content
                 br
                 .form-group
                     label.control-label(for='fullName') Full Name
-                    input#fullName.form-control(placeholder='Enter Full Name', type='text', required='required')
+                    input#fullName.form-control(name='registerFullName' placeholder='Enter Full Name', type='text', required='required')
                 .form-group
-                    label.control-label(for='studentId') Student ID
-                    input#studentId.form-control(placeholder='Student ID', type='text', required='required', pattern="^ *(\\d{2} *- *\\d{4})*$")
+                    label.control-label(for='studentID') Student ID
+                    input#studentID.form-control(name='registerStudentID' placeholder='Student ID', type='text', required='required', pattern="^ *(\\d{2} *- *\\d{4})*$")
                 #yearContainer.container-fluid
                     .radio-inline
                         input#radioFirstYear.radio(type='radio', name='radio', checked='')
@@ -25,7 +25,7 @@ block content
                         label(for='radioFourthYear') Fourth Year
                 .form-group
                     label.control-label(for='postNomination') Post
-                    select#postNomination.form-control(required='required')
+                    select#postNomination.form-control(required='required', name='registerPosition')
                         option Chairperson
                         option Vice Chairperson
                         option Treasurer
@@ -33,6 +33,6 @@ block content
                         option Organizing Secretary/ Public Relations
                         option Resource Lab manager
                 .form-group
-                    input(type='file' name='img')
+                    input(type='file' name='registerImage')
                 br
                 button.btn.Submit(type='submit') Submit
