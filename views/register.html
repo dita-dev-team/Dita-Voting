@@ -1,0 +1,53 @@
+<div class="col">
+    <div class="col-md-8">
+        <form role="form">
+            <br>
+            <div class="form-group">
+                <label class="control-label" for="fullName">Full Name</label>
+                <input class="form-control" id="fullName" placeholder="Enter Full Name"
+                       type="text" required="required">
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="major">Major</label>
+                <input class="form-control" id="major" placeholder="Enter Major"
+                       type="text" required="required">
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="studentId">Student ID</label>
+                <input class="form-control" id="studentId" placeholder="Student ID"
+                       type="text" required="required" pattern="^ *(\d{2} *- *\d{4})*$">
+            </div>
+            <div class="container-fluid" id="yearContainer">
+                <div class="radio-inline">
+                    <input type="radio" name="radio" id="radioFirstYear" class="radio" checked="">
+                    <label for="radioFirstYear">First Year</label>
+                </div>
+                <div class="radio-inline">
+                    <input type="radio" name="radio" id="radioSecondYear" class="radio">
+                    <label for="radioSecondYear">Second Year</label>
+                </div>
+                <div class="radio-inline">
+                    <input type="radio" name="radio" id="radioThirdYear" class="radio">
+                    <label for="radioThirdYear">Third Year</label>
+                </div>
+                <div class="radio-inline">
+                    <input type="radio" name="radio" id="radioFourthYear" class="radio">
+                    <label for="radioFourthYear">Fourth Year</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="postNomination">Post</label>
+                <select class="form-control" id="postNomination" required="required">
+                    <option>Chairperson</option>
+                    <option>Vice Chairperson</option>
+                    <option>Treasurer</option>
+                    <option>Secretary</option>
+                    <option>Organizing Secretary/ Public Relations</option>
+                    <option>Resource Lab manager</option>
+                </select>
+            </div>
+            <br>
+            <button type="submit" class="btn Submit">Submit</button>
+        </form>
+    </div>
+</div>
