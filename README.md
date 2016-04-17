@@ -20,7 +20,7 @@ Dita Voting uses a number of open source projects to work properly:
 You need Nodejs and npm installed globally:
 
 ```sh
-$ git clone [repo] dita
+$ git clone http://github.com/dita-dev-team/Dita-Voting.git dita
 $ cd dita
 $ npm install
 ```
