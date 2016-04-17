@@ -12,6 +12,7 @@ var users = require('./routes/users');
 var vote = require('./routes/vote');
 var thanks = require('./routes/thanks');
 var register = require('./routes/register');
+;
 var results = require('./routes/results');
 
 var app = express();
