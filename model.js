@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-mongoose.connect('mongodb://localhost/dita_ballot_box');
+mongoose.connect('mongodb://root:root@ds025180.mlab.com:25180/dita_dev');
 
 var candidateSchema = new Schema({
 	fullname: { type: String, required: true },
