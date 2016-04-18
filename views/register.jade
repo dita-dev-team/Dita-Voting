@@ -2,7 +2,7 @@ extends layout
 block content
     .col
         .col-md-10
-            form(role='form')
+            form(role='form', action='/register', method='post')
                 br
                 .form-group
                     label.control-label(for='fullName') Full Name
@@ -34,5 +34,10 @@ block content
                         option Resource Lab manager
                 .form-group
                     input(type='file' name='registerImage')
+                .form-group
+                    if error
+                        .alert.alert-danger
+                            a.close(href='#', data-dismiss='alert', aria-label='close') ×
+                            strong= message
                 br
                 button.btn.Submit(type='submit') Submit
