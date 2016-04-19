@@ -12,6 +12,15 @@ var candidateSchema = new Schema({
     created_at: {type: Date, default: Date.now}
 });
 
+candidateSchema.methods.isAcsStudent = function (callback) {
+    Student.find({studentId: this.studentId}, function (err, student) {
+        if (err == null || !student)
+            callback(false);
+        else
+            callback(true);
+    });
+};
+
 var studentSchema = new Schema({
     fullname: {type: String, required: true},
     studentId: {type: String, required: true, unique: true},
@@ -22,14 +31,7 @@ var studentSchema = new Schema({
 var Candidate = mongoose.model('Candidate', candidateSchema);
 var Student = mongoose.model('Student', studentSchema);
 
-candidateSchema.methods.isAcsStudent = function (callback) {
-    Student.find({studentId: this.studentId}, function (err, student) {
-        if (err == null || !student)
-            callback(false);
-        else
-            callback(true);
-    });
-};
+
 
 module.exports.Candidate = Candidate;
 module.exports.Student = Student;
