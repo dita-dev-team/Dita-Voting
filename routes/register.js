@@ -46,7 +46,7 @@ router.post('/', function (req, res) {
         image: image
     });
 
-    candidate.verify(function (result) {
+    candidate.isAcsStudent(function (result) {
         if (!result) {
             res.render('register', {error: true, message: 'Must be an ACS student'});
         } else {
