@@ -10,19 +10,6 @@ block content
                 .form-group
                     label.control-label(for='studentID') Student ID
                     input#studentID.form-control(name='registerStudentID' placeholder='Student ID', type='text', required='required', pattern="^ *(\\d{2} *- *\\d{4})*$")
-                #yearContainer.container-fluid
-                    .radio-inline
-                        input#radioFirstYear.radio(type='radio', name='radio', checked='')
-                        label(for='radioFirstYear') First Year
-                    .radio-inline
-                        input#radioSecondYear.radio(type='radio', name='radio')
-                        label(for='radioSecondYear') Second Year
-                    .radio-inline
-                        input#radioThirdYear.radio(type='radio', name='radio')
-                        label(for='radioThirdYear') Third Year
-                    .radio-inline
-                        input#radioFourthYear.radio(type='radio', name='radio')
-                        label(for='radioFourthYear') Fourth Year
                 .form-group
                     label.control-label(for='postNomination') Post
                     select#postNomination.form-control(required='required', name='registerPosition')

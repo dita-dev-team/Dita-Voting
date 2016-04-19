@@ -38,10 +38,9 @@ router.post('/', function (req, res) {
     var studentId = req.body.registerStudentID;
     var position = req.body.registerPosition;
     var image = req.body.registerImage;
-
     var candidate = new model.Candidate({
         fullname: fullName,
-        studentId: studentId,
+        student_id: studentId,
         position: position,
         image: image
     });
@@ -54,7 +53,18 @@ router.post('/', function (req, res) {
                 if (!result) {
                     res.render('register', {error: true, message: 'Must be a third or fourth year'});
                 } else {
-                    candidate.save();
+                    candidate.exists(function (result) {
+                        if (result) {
+                            res.render('register', {error: true, message: 'Candidate already registered'});
+                        } else {
+                            model.Student.findOne({student_id: studentId}, function (err, student) {
+                                candidate.fullname = student.fullname.title();
+                            });
+                            //candidate.save();
+                            res.render('success', {message: 'Registration successful'});
+                        }
+                    });
+
                 }
             });
         }
