@@ -53,14 +53,15 @@ router.post('/', function (req, res) {
                 if (!result) {
                     res.render('register', {error: true, message: 'Must be a third or fourth year'});
                 } else {
-                    candidate.exists(function (result) {
-                        if (result) {
+                    model.Candidate.findOne({student_id: studentId}, function (err, cand) {
+                        if (err == null && cand) {
                             res.render('register', {error: true, message: 'Candidate already registered'});
                         } else {
                             model.Student.findOne({student_id: studentId}, function (err, student) {
-                                candidate.fullname = student.fullname.title();
+                                if (err == null && student)
+                                    candidate.fullname = student.fullname;
                             });
-                            //candidate.save();
+                            candidate.save();
                             res.render('success', {message: 'Registration successful'});
                         }
                     });
@@ -69,9 +70,6 @@ router.post('/', function (req, res) {
             });
         }
     });
-
-    //console.log(" " + fullName + " " + studentId + " " + position + " " + image);
-    //app.use(bodyParser.urlencoded({extended: false}));
 });
 
 module.exports = router;

@@ -5,11 +5,8 @@ block content
             form(role='form', action='/register', method='post')
                 br
                 .form-group
-                    label.control-label(for='fullName') Full Name
-                    input#fullName.form-control(name='registerFullName' placeholder='Enter Full Name', type='text', required='required')
-                .form-group
                     label.control-label(for='studentID') Student ID
-                    input#studentID.form-control(name='registerStudentID' placeholder='Student ID', type='text', required='required', pattern="^ *(\\d{2} *- *\\d{4})*$")
+                    input#studentID.form-control(name='registerStudentID' placeholder='Student ID e.g XX-XXXX', type='text', required='required', pattern="^ *(\\d{2} *- *\\d{4})*$")
                 .form-group
                     label.control-label(for='postNomination') Post
                     select#postNomination.form-control(required='required', name='registerPosition')
@@ -19,8 +16,6 @@ block content
                         option Secretary
                         option Organizing Secretary/ Public Relations
                         option Resource Lab manager
-                .form-group
-                    input(type='file' name='registerImage')
                 .form-group
                     if error
                         .alert.alert-danger

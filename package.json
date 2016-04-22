@@ -10,11 +10,11 @@
     "cookie-parser": "latest",
     "debug": "latest",
     "express": "latest",
-    "jade": "latest",
-    "morgan": "latest",
-    "serve-favicon": "latest",
     "form-validate": "latest",
+    "jade": "latest",
     "mongoose": "latest",
-    "multer": "latest"
+    "morgan": "latest",
+    "multer": "latest",
+    "serve-favicon": "latest"
   }
 }
