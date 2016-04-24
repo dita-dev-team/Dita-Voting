@@ -1,9 +1,9 @@
 var mongoose = require('mongoose');
-mongoose.set('debug', true);
+//mongoose.set('debug', true);
 var Schema = mongoose.Schema;
 
-//mongoose.connect('mongodb://root:root@ds025180.mlab.com:25180/dita_dev');
-mongoose.connect('localhost', 'dita_ballot_box');
+mongoose.connect('mongodb://root:root@ds025180.mlab.com:25180/dita_dev');
+//mongoose.connect('localhost', 'dita_ballot_box');
 
 var studentSchema = new Schema({
     fullname: {type: String, required: true},
