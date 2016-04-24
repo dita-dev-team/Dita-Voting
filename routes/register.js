@@ -34,18 +34,9 @@ router.get('/', function(req,res) {
 });
 
 router.post('/', function (req, res) {
-    var fullName = req.body.registerFullName;
     var studentId = req.body.registerStudentID;
-    var position = req.body.registerPosition;
-    var image = req.body.registerImage;
-    var candidate = new model.Candidate({
-        fullname: fullName,
-        student_id: studentId,
-        position: position,
-        image: image
-    });
 
-    candidate.isAcsStudent(function (result) {
+    model.Candidate.isAcsStudent(studentId, function (result) {
         if (!result) {
             res.render('register', {error: true, message: 'Must be an ACS student'});
         } else {
@@ -54,15 +45,27 @@ router.post('/', function (req, res) {
                     res.render('register', {error: true, message: 'Must be a third or fourth year'});
                 } else {
                     model.Candidate.findOne({student_id: studentId}, function (err, cand) {
-                        if (err == null && cand) {
+                        if (err == null && cand != null) {
                             res.render('register', {error: true, message: 'Candidate already registered'});
                         } else {
                             model.Student.findOne({student_id: studentId}, function (err, student) {
-                                if (err == null && student)
-                                    candidate.fullname = student.fullname;
+                                if (err == null && student) {
+                                    var candidate = new model.Candidate({
+                                        fullname: student.fullname,
+                                        student_id: student.student_id,
+                                        position: req.body.registerPosition,
+                                    });
+
+                                    candidate.save(function (err) {
+                                        if (err) {
+                                            res.status(500).send('Internal Error!');
+                                        } else {
+                                            res.render('success', {message: 'Registration successful'});
+                                        }
+                                    });
+                                }
+
                             });
-                            candidate.save();
-                            res.render('success', {message: 'Registration successful'});
                         }
                     });
 

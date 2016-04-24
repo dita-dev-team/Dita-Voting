@@ -9,72 +9,66 @@ block content
                 div.col-md-12
                     form(role='form', action='/vote', method='post')
                         #errors.form-group(hidden='')
-                            .alert.alert-danger
-                                a.close(href='#', data-dismiss='alert', aria-label='close') ×
-                                strong Error!
-                                | Indicates a successful or positive action.
-                        #voting-number.form-group
-                            label.control-label(for='voting-number-text')
+                            if error
+                                .alert.alert-danger
+                                    a.close(href='#', data-dismiss='alert', aria-label='close') ×
+                                    strong= message
+                        .form-group
+                            label.control-label(for='votingNumber')
                                 | Voting number
                                 br
-                            input#voting-number-text.form-control(name='votingNumber', placeholder='Enter voting number', type='text', required='')
-                        #chairperson.form-group
-                            label.control-label(for='chairperson-list')
+                            input#votingNumber.form-control(name='votingNumber', placeholder='Enter voting number', type='text', required='')
+                        .form-group
+                            label.control-label(for='chairperson')
                                 | Chairperson
                                 br
-                            select#chairperson-list.form-control(name='chairperson')
-                                option 1
-                                option 2
-                                option 3
-                                option 4
+                            select#chairperson.form-control(name='chairperson')
+                                each c in candidates
+                                    if c.position == 'Chairperson'
+                                        option(name=c.student_id) #{c.fullname}
 
-                        #vicechair.form-group
-                            label.control-label(for='vicechair-list')
+                        .form-group
+                            label.control-label(for='vicechair')
                                 | Vice Chairperson
                                 br
-                            select#vicechair-list.form-control(name='vicechair')
-                                option 1
-                                option 2
-                                option 3
-                                option 4
+                            select#vicechair.form-control(name='vicechair')
+                                each c in candidates
+                                    if c.position == 'Vice Chairperson'
+                                        option(name=c.student_id) #{c.fullname}
 
-                        #secretary.form-group
-                            label.control-label(for='secretary-list')
+                        form-group
+                            label.control-label(for='secretary')
                                 | Secretary
                                 br
-                            select#secretary-list.form-control(name='secretary')
-                                option 1
-                                option 2
-                                option 3
-                                option 4
+                            select#secretary.form-control(name='secretary')
+                                each c in candidates
+                                    if c.position == 'Secretary'
+                                        option(name=c.student_id) #{c.fullname}
 
-                        #pr.form-group
-                            label.control-label(for='pr-list')
-                                | Organizing Secretary/Public Relations
+                        form-group
+                            label.control-label(for='pr')
+                                | Organizing Secretary/ Public Relations
                                 br
-                            select#pr-list.form-control(name='publicRelations')
-                                option 1
-                                option 2
-                                option 3
-                                option 4
+                            select#pr.form-control(name='publicRelations')
+                                each c in candidates
+                                    if c.position == 'Organizing Secretary/ Public Relations'
+                                        option(name=c.student_id) #{c.fullname}
 
-                        #treasurer.form-group
-                            label.control-label(for='chairperson-list')
+                        .form-group
+                            label.control-label(for='treasurer')
                                 | Treasurer
                                 br
-                            select#treasurer-list.form-control(name='treasurer')
-                                option 1
-                                option 2
-                                option 3
-                                option 4
+                            select#treasurer.form-control(name='treasurer')
+                                each c in candidates
+                                    if c.position == 'Treasurer'
+                                        option(name=c.student_id) #{c.fullname}
 
-                        #rm.form-group
-                            label.control-label(for='rm-list')
+                        .form-group
+                            label.control-label(for='rm')
                                 | Resource Lab Manager
                                 br
-                            select#rm-list.form-control(name='resourceManager')
-                                option 1
-                                option 2
-                                option 3
-                                option 4
-                        button.btn.btn-default(type='submit') Submit
+                            select#rm.form-control(name='resourceManager')
+                                each c in candidates
+                                    if c.position == 'Resource Lab Manager'
+                                        option(name=c.student_id) #{c.fullname}
+                        button#submit.btn.btn-default(type='submit') Submit

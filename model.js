@@ -3,12 +3,12 @@ mongoose.set('debug', true);
 var Schema = mongoose.Schema;
 
 //mongoose.connect('mongodb://root:root@ds025180.mlab.com:25180/dita_dev');
-mongoose.connect('mongodb://localhost/dita_ballot_box');
+mongoose.connect('localhost', 'dita_ballot_box');
 
 var studentSchema = new Schema({
     fullname: {type: String, required: true},
     student_id: {type: String, required: true, unique: true},
-    votingNo: {type: Number, required: true, unique: true},
+    voting_no: {type: Number, required: true, unique: true},
     voted: {type: Boolean, required: true, default: false}
 });
 var Student = mongoose.model('Student', studentSchema, 'student');
@@ -22,8 +22,8 @@ var candidateSchema = new Schema({
     created_at: {type: Date, default: Date.now}
 });
 
-candidateSchema.methods.isAcsStudent = function (callback) {
-    Student.findOne({student_id: this.student_id}, function (err, student) {
+candidateSchema.statics.isAcsStudent = function (studentId, callback) {
+    Student.findOne({student_id: studentId}, function (err, student) {
         if (err != null || !student) {
             callback(false);
         }
