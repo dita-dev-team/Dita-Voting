@@ -1,2 +1,102 @@
 extends layout
 block content
+    .section
+        .container
+            .row
+                .col-md-6
+                    h2 Chairperson
+                    table.table.table-condensed.table-sm.table-striped
+                        thead
+                            tr
+                                th Name
+                                th Votes
+                        tbody
+                        each result in votes
+                            if result.position == "Chairperson"
+                                tr
+                                    td #{result.fullname}
+                                    td #{result.votes}
+            .row
+                .col-md-6
+                    h2 Vice Chairperson
+                    table.table.table-condensed.table-sm.table-striped
+                        thead
+                            tr
+                                th Name
+                                th Votes
+                        tbody
+                        each result in votes
+                            if result.position == "Vice Chairperson"
+                                tr
+                                    td #{result.fullname}
+                                    td #{result.votes}
+            .row
+                .col-md-6
+                    h2 Secretary
+                    table.table.table-condensed.table-sm.table-striped
+                        thead
+                            tr
+                                th Name
+                                th Votes
+                        tbody
+                        each result in votes
+                            if result.position == "Secretary"
+                                tr
+                                    td #{result.fullname}
+                                    td #{result.votes}
+            .row
+                .col-md-6
+                    h2 Public Relations
+                    table.table.table-condensed.table-sm.table-striped
+                        thead
+                            tr
+                                th Name
+                                th Votes
+                        tbody
+                        each result in votes
+                            if result.position == "Public Relations"
+                                tr
+                                    td #{result.fullname}
+                                    td #{result.votes}
+            .row
+                .col-md-6
+                    h2 Organizing Secretary
+                    table.table.table-condensed.table-sm.table-striped
+                        thead
+                            tr
+                                th Name
+                                th Votes
+                        tbody
+                        each result in votes
+                            if result.position == "Organizing Secretary"
+                                tr
+                                    td #{result.fullname}
+                                    td #{result.votes}
+            .row
+                .col-md-6
+                    h2 Treasurer
+                    table.table.table-condensed.table-sm.table-striped
+                        thead
+                            tr
+                                th Name
+                                th Votes
+                        tbody
+                        each result in votes
+                            if result.position == "Treasurer"
+                                tr
+                                    td #{result.fullname}
+                                    td #{result.votes}
+            .row
+                .col-md-6
+                    h2 Resource Lab Manager
+                    table.table.table-condensed.table-sm.table-striped
+                        thead
+                            tr
+                                th Name
+                                th Votes
+                        tbody
+                        each result in votes
+                            if result.position == "Resource Lab Manager"
+                                tr
+                                    td #{result.fullname}
+                                    td #{result.votes}

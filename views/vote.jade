@@ -47,11 +47,20 @@ block content
 
                         form-group
                             label.control-label(for='pr')
-                                | Organizing Secretary/ Public Relations
+                                | Public Relations
                                 br
                             select#pr.form-control(name='publicRelations')
                                 each c in candidates
-                                    if c.position == 'Organizing Secretary/ Public Relations'
+                                    if c.position == 'Public Relations'
+                                        option(name=c.student_id) #{c.fullname}
+
+                        form-group
+                            label.control-label(for='os')
+                                | Organizing Secretary
+                                br
+                            select#os.form-control(name='organizingSecretary')
+                                each c in candidates
+                                    if c.position == 'Organizing Secretary'
                                         option(name=c.student_id) #{c.fullname}
 
                         .form-group
