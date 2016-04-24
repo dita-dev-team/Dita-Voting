@@ -3,6 +3,10 @@ var model = require('../model');
 var express = require('express');
 var router = express.Router();
 
+var VOTING_DATES = [
+    new Date(2016, 4, 28),
+    new Date(2016, 4, 29)
+];
 
 var storeVote = function (studentId, callback) {
     model.Candidate.findOne({fullname: studentId}, function (err, candidate) {
@@ -17,11 +21,20 @@ var storeVote = function (studentId, callback) {
 };
 
 router.get('/', function(req,res) {
-    model.Candidate.find({}, function (err, candidates) {
-        if (!err && candidates) {
-            res.render('vote', {title: 'Vote', candidates: candidates});
-        }
-    });
+    var currentDate = new Date();
+    currentDate.setHours(0, 0, 0, 0);
+    if (currentDate < VOTING_DATES[0]) {
+        res.render('closed', {message: 'Voting has not been opened'});
+    } else if (currentDate > VOTING_DATES[1]) {
+        res.render('closed', {message: 'The voting deadline has passed.'});
+    } else {
+        model.Candidate.find({}, function (err, candidates) {
+            if (!err && candidates) {
+                res.render('vote', {title: 'Vote', candidates: candidates});
+            }
+        });
+    }
+    
 
 });
 
@@ -56,6 +69,7 @@ router.post('/', function(req,res) {
                     req.body.vicechair,
                     req.body.secretary,
                     req.body.publicRelations,
+                    req.body.organizingSecretary,
                     req.body.treasurer,
                     req.body.resourceManager
                 );

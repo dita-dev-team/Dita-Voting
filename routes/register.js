@@ -4,11 +4,9 @@ var express = require('express');
 var router = express.Router();
 
 var REGISTRATION_DATES = [
-    new Date(2016, 4, 20),
-    new Date(2016, 4, 21),
-    new Date(2016, 4, 22),
-    new Date(2016, 4, 23),
-    new Date(2016, 4, 24)
+    new Date(2016, 4, 25),
+    new Date(2016, 4, 26),
+    new Date(2016, 4, 27)
 ];
 
 var verifyYear = function(year, callback) {
@@ -21,16 +19,15 @@ var verifyYear = function(year, callback) {
 };
 
 router.get('/', function(req,res) {
-    /*var currentDate = new Date();
+    var currentDate = new Date();
     currentDate.setHours(0, 0, 0, 0);
     if (currentDate < REGISTRATION_DATES[0]) {
-        res.render('noregister', {message: 'Registration has not been opened'});
-    } else if (currentDate > REGISTRATION_DATES[4]) {
-        res.render('noregister', {message: 'The registration deadline has passed.'});
+        res.render('closed', {message: 'Registration has not been opened'});
+    } else if (currentDate > REGISTRATION_DATES[2]) {
+        res.render('closed', {message: 'The registration deadline has passed.'});
     } else {
         res.render('register', {title: 'Register'});
-    }*/
-    res.render('register', {title: 'Register'});
+    }
 });
 
 router.post('/', function (req, res) {

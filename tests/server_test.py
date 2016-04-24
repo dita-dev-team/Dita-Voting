@@ -61,7 +61,7 @@ class DitaBallotBox(unittest.TestCase):
 			element = self.driver.find_element_by_id('studentID')
 			element.send_keys(s)
 			select = Select(self.driver.find_element_by_id('postNomination'))
-			index = i if i < 6 else randint(0, 5)
+			index = i if i < 7 else randint(0, 6)
 			select.select_by_index(index)
 			element.submit()
 		
@@ -107,6 +107,7 @@ class DitaBallotBox(unittest.TestCase):
 			'vicechair',
 			'secretary',
 			'pr',
+			'os',
 			'treasurer',
 			'rm'
 		]
@@ -136,11 +137,15 @@ class DitaBallotBox(unittest.TestCase):
 		for candidate in cursor:
 			votes += candidate['votes']
 			
+		
+		link = self.driver.find_element_by_link_text('Results')
+		link.click()
+		
 		assert votes == len(student_ids) * len(positions)
 		
 	def tearDown(self):
 		self.db.candidate.delete_many({})
-		self.driver.close()
+		#self.driver.close()
 		
 	@classmethod
 	def tearDownClass(cls):
