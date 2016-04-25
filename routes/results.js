@@ -2,7 +2,7 @@ var model = require('../model');
 var express = require('express');
 var router = express.Router();
 
-var RESULTS_DATE = new Date(2016, 4, 30);
+var RESULTS_DATE = new Date(2016, 3, 30);
 
 router.get('/', function(req,res) {
     var currentDate = new Date();

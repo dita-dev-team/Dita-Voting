@@ -4,8 +4,8 @@ var express = require('express');
 var router = express.Router();
 
 var VOTING_DATES = [
-    new Date(2016, 4, 28),
-    new Date(2016, 4, 29)
+    new Date(2016, 3, 28),
+    new Date(2016, 3, 29)
 ];
 
 var storeVote = function (studentId, callback) {
